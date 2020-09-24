@@ -1,0 +1,48 @@
+.label {
+    border-radius: 50 0 50 0;
+    background-color: var(--main-color);
+}
+
+.searchBar{
+    display: flex;
+    height: 30px;
+}
+
+.searchBox {
+    width: 300px;
+}
+
+.searchInput {
+    border-color:  var(--main-color);
+    border-style: solid;
+    border-radius: 0px 10px 10px 0px;
+    padding-left: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.searchLabel {
+    color:white;
+    background-color: var(--main-color);
+    border-radius: 10px 0 0 10px;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.searchItems>div {
+    padding: 10px 0px;
+    border-bottom: 1px solid var(--main-color);
+    cursor: pointer;
+}
+
+.searchDD {
+    padding-left: 5px;
+    width: 100%;
+    border-color:  var(--main-color);
+    border-style: solid;
+    border-radius: 0px 0px 10px 10px; 
+    border-top: none;
+}

@@ -1,0 +1,39 @@
+.navbarLogo {
+    width: 35px;
+    height: auto;
+}
+
+.navItems {
+    display: flex;
+    align-items: center;
+}
+
+.navStart {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navEnd {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navSpace {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.navBar {
+    color: white;
+    font-weight: semibold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    margin-bottom: 40px;
+}
+
+.navColor {
+    background-color: var(--main-color);
+}

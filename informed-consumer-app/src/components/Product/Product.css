@@ -1,0 +1,17 @@
+.productCard {
+    display: flex;
+    padding: 4px;
+    margin-top: 10px;
+    background-color: var(--main-color-opaque);
+    color: whitesmoke;
+    font-weight: normal;
+}
+
+.productCard img{
+    padding-right: 20px;
+}
+
+.productTitle {
+    size: 11;
+    font-weight: 600;
+}
