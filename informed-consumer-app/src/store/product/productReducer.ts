@@ -1,8 +1,9 @@
+
 import { GET_PRODUCT,
     SET_PRODUCT,
     ProductDispatchTypes,
     ProductData
-    } from '../actions/types';
+    } from '../types';
 
 export interface ProductState {
     isLoading: boolean,

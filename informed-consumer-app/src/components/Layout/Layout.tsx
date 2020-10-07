@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import SearchBar from '../Input/SearchBar';
+import React from "react";
+import SearchForm from '../Form/SearchForm';
 
 import './Layout.css';
 
@@ -7,7 +7,7 @@ const Layout: React.FC = () => {
 
   return (
     <div className="layout">
-      <SearchBar></SearchBar>
+      <SearchForm></SearchForm>
     </div>
   );
 }

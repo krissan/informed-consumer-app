@@ -33,7 +33,8 @@ export interface SetProducts {
 export type ProductDispatchTypes = GetProducts | SetProducts;
 /*---------------------------------------------------------------------------- */
 export const SET_SEARCH_PREVIEW = 'SET_SEARCH_PREVIEW'
-export const GET_SEARCH_PREVIEW = 'GET_SEARCH_PREVIEW'
+export const GET_SEARCH = 'GET_SEARCH'
+export const SET_SEARCH = 'SET_SEARCH'
 
 //Search Preview Item type
 export type SearchPreviewItem = {
@@ -42,8 +43,8 @@ export type SearchPreviewItem = {
 }
 
 //Search Preview Interfaces
-export interface GetSearchPreview {
-    type: typeof GET_SEARCH_PREVIEW
+export interface GetSearch {
+    type: typeof GET_SEARCH
 }
 
 export interface SetSearchPreview {
@@ -53,4 +54,11 @@ export interface SetSearchPreview {
     }
 }
 
-export type SearchDispatchTypes = GetSearchPreview | SetSearchPreview;
+export interface SetSearch {
+    type: typeof SET_SEARCH,
+    payload: {
+        products: Array<SearchPreviewItem>
+    }
+}
+
+export type SearchDispatchTypes = GetSearch | SetSearchPreview | SetSearch;

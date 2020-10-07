@@ -9,13 +9,18 @@ const Game = require('../../models/Game');
 // @access  Public
 router.get('/search', async(req, res) => {
     try {
-        const { name } = req.query;
+        const { name, limit } = req.query;
+        
         if(!name) {
             return res.status(400).json({msg: 'no search term'});
         }
+        else if (!limit)
+        {
+            return res.status(400).json({msg: 'no limit provided'});
+        }
         else
         {
-            const game = await Game.find( { name:  {$regex: name, $options: 'i'} } ).limit(10);
+            const game = await Game.find( { name:  {$regex: name, $options: 'i'} } ).limit(Number(limit));
             if (!game){
                 return res.status(400).json({msg: 'could not find game'});
             }

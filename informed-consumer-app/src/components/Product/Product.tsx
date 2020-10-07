@@ -1,7 +1,7 @@
 import React from "react";
 import {useSelector} from "react-redux";
 
-import {RootStore} from '../../store';
+import {RootStore} from '../../store/store';
 import './Product.css';
 
 const Product: React.FC = () => {
@@ -11,9 +11,7 @@ const Product: React.FC = () => {
     <div className="product">
       {productState ?
         <div className="productCard">
-          <div>
-            <img src={productState.picture} alt="Italian Trulli"></img>
-          </div>
+          <img src={productState.picture} alt="Italian Trulli"></img>
           <div>
             <div className="productTitle">{productState.name}</div>
             <div>{productState.price}</div>

@@ -1,11 +1,6 @@
-.label {
-    border-radius: 50 0 50 0;
-    background-color: var(--main-color);
-}
-
 .searchBar{
     display: flex;
-    height: 30px;
+    height: 38px;
 }
 
 .searchBox {
@@ -32,17 +27,35 @@
     height: 100%;
 }
 
-.searchItems>div {
-    padding: 10px 0px;
-    border-bottom: 1px solid var(--main-color);
-    cursor: pointer;
+.searchPreviewItems {
+    border: 1px solid var(--main-color);
+    padding: 10px;
+    margin-top: 5px;
+    max-height: 50%;
+    scroll-behavior: auto;
+    overflow-y: scroll;
+    position: absolute;
+    width: 300px;
+    background-color: white;
 }
 
-.searchDD {
-    padding-left: 5px;
+.searchPreviewItems>div
+{
     width: 100%;
-    border-color:  var(--main-color);
+    padding: 10px 20px;
     border-style: solid;
-    border-radius: 0px 0px 10px 10px; 
-    border-top: none;
+    border-color:  var(--main-color);
+    border-width: 0px 0px 1px 0px;
+    cursor: pointer;
+    background-color: transparent;
+    text-align: left;
+}
+
+.searchPreviewItems> div:hover, .searchPreviewItems> div.active {
+    background-color:  var(--main-color);
+    color: white;
+}
+
+.noResult{
+    overflow-y: auto !important;
 }

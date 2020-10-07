@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { History } from 'history';
 
-import { GET_PRODUCT, SET_PRODUCT, ProductDispatchTypes, ProductData } from './types';
+import { GET_PRODUCT, SET_PRODUCT, ProductDispatchTypes, ProductData } from '../types';
 import { Dispatch } from "redux";
 
 
