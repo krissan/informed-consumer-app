@@ -1,4 +1,4 @@
-import React, { useRef, useState, ChangeEvent, useEffect } from 'react';
+import React, { useState, ChangeEvent, useEffect, useRef } from 'react';
 import {useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -26,14 +26,14 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
 
   //Alter input value based on autocomplete selected
   useEffect(() => {
-    if(current != 0) {
+    if(current !== 0) {
       handleChange(name, searchPreview[current-1].name);
     }
   }, [current])
 
   //If search preview changes return to input
   useEffect(() => {
-    if(current != 0) {
+    if(current !== 0) {
       setCurrent(0);
     }
   }, [searchPreview])
@@ -45,7 +45,7 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
       //Move down preview list
       case "ArrowDown": 
         e.preventDefault();
-        if (current < searchPreview.length - 1)
+        if (current < searchPreview.length)
         {
           setCurrent(current+1);
         }
@@ -87,6 +87,7 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
         {/* Search bar */}
         <input
         type='text'
+        tabIndex={0}
         autoFocus={autoFocus }
         name={name}
         placeholder="..."
@@ -103,18 +104,19 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
         {searchPreview.length>0 ?
           <div className= 'searchPreviewItems' onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
               {searchPreview.map((item, index)=>
-                <div 
+                <button
+                  type="button"
                   className={`${index+1 === current ? "active": ""}`}
-                  onClick={() => dispatch(getProductData(history, item.appid))} 
+                  onClick={() => dispatch(getProductData(history, item.appid)) } 
                   key={item.appid} 
                   id={(index+1).toString()}
                 >
                     {item.name}
-                </div>
+                </button>
               )}
           </div>
           :
-          <div className= 'searchPreviewItems noResult'>No Results Found</div>
+          <div hidden={inputValue === ''} className= 'searchPreviewItems noResult'>No Results Found</div>
         }
         </div>
       </div>

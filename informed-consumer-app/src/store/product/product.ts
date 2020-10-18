@@ -3,6 +3,7 @@ import { History } from 'history';
 
 import { GET_PRODUCT, SET_PRODUCT, ProductDispatchTypes, ProductData } from '../types';
 import { Dispatch } from "redux";
+import store from '../store';
 
 
 
@@ -15,24 +16,31 @@ export const getProductData = (history:History, appid: number) => async(dispatch
     try {
         const resp = await axios.get('http://localhost:5000/api/game?appid='+appid);
 
-        const storeData = resp.data[appid].data;
-
-        const product:ProductData ={
-            name: storeData.name,
-            productKey: storeData.steam_appid,
-            price: storeData.price_overview.final_formatted,
-            currency: storeData.price_overview.currency,
-            store: "Steam",
-            picture: storeData.header_image
+        if(!resp.data[appid].data)
+        {
+            history.push('/gameNotFound');
         }
+        else
+        {
+            const storeData = resp.data[appid].data;
+            
+            const product:ProductData ={
+                name: storeData.name,
+                productKey: storeData.steam_appid,
+                price: storeData.price_overview? storeData.price_overview.final_formatted : "Free",
+                currency: storeData.price_overview? storeData.price_overview.currency : "",
+                store: "Steam",
+                picture: storeData.header_image
+            }
 
-        history.push('/game');
-        
-        //push product data to store and end loading flag
-        dispatch({
-            type: SET_PRODUCT, 
-            payload: {product: product}
-        });
+            history.push('/game');
+            
+            //push product data to store and end loading flag
+            dispatch({
+                type: SET_PRODUCT, 
+                payload: {product: product}
+            });
+        }
     }
     catch(err) {
         console.log(err);

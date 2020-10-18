@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from "./components/Layout/NavBar";
 import Layout from "./components/Layout/Layout";
 import Product from "./components/Product/Product";
+import ProductDNE from "./components/Product/ProductDoesNotExist";
+
 import {
   BrowserRouter,
   Route,
@@ -17,13 +19,16 @@ function App() {
           <Navbar></Navbar>
           <div className='centerBlock'>
             <Switch>
-            <Route exact path="/game">
-              <Product />
-            </Route>
-            <Route exact path="/">
-              <Layout />
-            </Route>
-            <Layout></Layout>
+              <Route exact path="/game">
+                <Product />
+              </Route>
+              <Route exact path="/gameNotFound">
+                <ProductDNE />
+              </Route>
+              <Route exact path="/">
+                <Layout />
+              </Route>
+              <Layout></Layout>
             </Switch>
           </div>
       </BrowserRouter>

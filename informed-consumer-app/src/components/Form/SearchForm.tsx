@@ -14,10 +14,11 @@ const SearchForm: React.FC = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const searchState = useSelector((state: RootStore) => state.search);
+  const searchListRef = React.useRef<HTMLDivElement>(null);
 
   //Search form data
   const [searchParams, setSearchParams] = useState({
-    searchQuery: ''
+    searchQuery: searchState.SearchTerm
   });
 
   //Validate search form data
@@ -49,20 +50,25 @@ const SearchForm: React.FC = () => {
     if(validateForm()){
       dispatch(getSearch(searchParams.searchQuery,1000,false));   
     }
+    if(null !== searchListRef.current)
+    {
+      console.log(searchListRef.current);
+      searchListRef.current.focus();
+    }
   };
 
 
   return (
-    <div>
+    <div className="searchForm">
       <form onSubmit={handleSubmit}>
             <FormGroup controlId="searchQuery">
                   {/* Search bar */}
-                  <SearchBar inputValue={searchParams.searchQuery} searchPreview={searchState.SearchPreview} handleSearchPreview={handleSearchPreview} handlePreviewItemEvent={previewItemEvent} handleChange={handleChange} name='searchQuery' autoFocus={true} ></SearchBar>
+                  <SearchBar inputValue={searchParams.searchQuery} searchPreview={searchState.SearchPreview} handleSearchPreview={handleSearchPreview} handlePreviewItemEvent={previewItemEvent} handleChange={handleChange} name='searchQuery' autoFocus={false} ></SearchBar>
 
                   {/* Search Results */}
-                  <div className= 'searchItems'>
+                  <div className= 'searchItems' ref={searchListRef} tabIndex={-1}>
                     {searchState.SearchItems.map((item)=>
-                      <div onClick={() => dispatch(getProductData(history, item.appid))} key={item.appid}>{item.name}</div>
+                      <button type='submit' onClick={() => dispatch(getProductData(history, item.appid))} key={item.appid}>{item.name}</button>
                     )}
                   </div>
             </FormGroup>

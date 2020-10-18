@@ -1,8 +1,9 @@
 import { GET_SEARCH,
     SET_SEARCH,
+    CLEAR_SEARCH,
     SET_SEARCH_PREVIEW,
     SearchDispatchTypes,
-    SearchPreviewItem
+    SearchPreviewItem,
     } from '../types';
 
 export interface SearchState {
@@ -32,7 +33,8 @@ export const searchReducer = (state:SearchState = initialState, action: SearchDi
             return{
                 ...state,
                 isLoading: false,
-                SearchPreview: [...action.payload.products]
+                SearchPreview: [...action.payload.products],
+                SearchTerm: action.payload.form.query
             }
         //End loading, Store Search Preview
         case SET_SEARCH:
@@ -40,6 +42,12 @@ export const searchReducer = (state:SearchState = initialState, action: SearchDi
                 ...state,
                 isLoading: false,
                 SearchItems: [...action.payload.products]
+            }
+        case CLEAR_SEARCH:
+            return{
+                ...state,
+                isLoading: false,
+                SearchItems: []
             }       
         default:
             return state;

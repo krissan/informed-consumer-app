@@ -24,21 +24,5 @@ const Product: React.FC = () => {
     </div>
   );
 }
-/*import React, { useEffect } from "react";
-import SearchBar from '../Input/SearchBar';
 
-import './Layout.css';
-
-const Results: React.FC = () => {
-
-  return (
-    <div className="layout">
-        <div className='centerBlock'>
-            <SearchBar></SearchBar>
-        </div>
-    </div>
-  );
-}
-
-export default Results;*/
 export default Product;

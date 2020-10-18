@@ -1,9 +1,15 @@
 
 .searchItems {
     margin-top: 20px;
+    width: 450px;
 }
 
-.searchItems>div {
+.searchItems:focus {
+    outline: none;
+}
+
+
+.searchItems>button {
     width: 100%;
     padding: 10px 20px;
     border-style: solid;
@@ -14,8 +20,9 @@
     text-align: left;
 }
 
-.searchItems>div:hover
+.searchItems>button:hover, .searchItems>button:focus
 {
     background-color:  var(--main-color);
     color: white;
+    outline: none;
 }

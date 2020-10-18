@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SearchDispatchTypes, GET_SEARCH, SET_SEARCH, SET_SEARCH_PREVIEW } from '../types';
+import { SearchDispatchTypes, GET_SEARCH, CLEAR_SEARCH, SET_SEARCH, SET_SEARCH_PREVIEW } from '../types';
 import { Dispatch } from "redux";
 
 
@@ -15,7 +15,8 @@ export const getSearch = (query: string, limit: number, preview: boolean) => asy
             dispatch({
                 type: SET_SEARCH_PREVIEW,
                 payload: {
-                    products: []
+                    products: [],
+                    form: {query:''}
                 }
             });
         } else {
@@ -26,7 +27,8 @@ export const getSearch = (query: string, limit: number, preview: boolean) => asy
                 dispatch({
                     type: SET_SEARCH_PREVIEW,
                     payload: {
-                        products: resp.data
+                        products: resp.data,
+                        form: {query: query}
                     }
                 });
             }
@@ -35,12 +37,25 @@ export const getSearch = (query: string, limit: number, preview: boolean) => asy
                 dispatch({
                     type: SET_SEARCH,
                     payload: {
-                        products: resp.data
+                        products: resp.data,
+                        form: {query: query}
                     }
                 });
             }
         }
 
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
+//clear search preview results
+export const clearSearchPreview = () => async(dispatch: Dispatch<SearchDispatchTypes>) => {
+    try {        
+        dispatch({
+            type: CLEAR_SEARCH
+        });
     }
     catch(err) {
         console.log(err);
