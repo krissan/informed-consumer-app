@@ -3,17 +3,19 @@
     color: whitesmoke;
     font-weight: normal;
     padding: 20px;
-
 }
 
 .productCard>img{
     width: 50%;
-    padding-right: 30px;
+    margin-right: 30px;
+    border: solid 5px rgba(255, 255, 255, 0.7);;
 }
 
 .productTitle {
     size: 11;
+    font-size: 30px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .product {
@@ -23,5 +25,12 @@
 
 .productDNE {
     padding: 50px;
-    font-size: 50px;
+    font-size: 40px;
+    color: whitesmoke;
+}
+
+.productContent
+{
+    margin-left: 5px;
+    font-size: 20px;
 }

@@ -6,11 +6,12 @@
 .navItems {
     display: flex;
     align-items: center;
-    font-weight: 100;
+    font-weight: normal;
+    font-size: 19px;
 }
 
 .nav-item:hover {
-    font-weight: 400;
+    text-shadow: 1px 0 0 currentColor;
 }
 
 .navStart {
@@ -22,6 +23,7 @@
 .navEnd {
     display: flex;
     justify-content: flex-start;
+    font-size: 18px;
 }
 
 .navSpace {
@@ -31,12 +33,11 @@
 
 .navBar {
     color: white;
-    font-weight: semibold;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
-    margin-bottom: 40px;
+    height: 70px;
+    margin: 0px 100px;
 }
 
 .navColor {

@@ -30,6 +30,7 @@ export const searchReducer = (state:SearchState = initialState, action: SearchDi
             }
         //End loading, Store Search Preview
         case SET_SEARCH_PREVIEW:
+            console.log(4);
             return{
                 ...state,
                 isLoading: false,

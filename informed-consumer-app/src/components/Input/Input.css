@@ -1,6 +1,7 @@
 .searchBar{
     display: flex;
     height: 38px;
+    margin-bottom: 15px;
 }
 
 .searchBox {

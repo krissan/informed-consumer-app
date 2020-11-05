@@ -28,7 +28,7 @@ const SearchForm: React.FC = () => {
 
   //Handle input field changes
   const handleChange = (name: string, value: any) => {
-    setSearchParams({...searchParams, [name]: value})
+    setSearchParams({...searchParams, [name]: value});
   }
 
   //Handle search preview
@@ -36,6 +36,7 @@ const SearchForm: React.FC = () => {
     const {name, value} = e.target;
     handleChange(name, value);
     dispatch(getSearch(e.target.value,10,true));
+    console.log(2);
   }
 
   //To be run when search preview item is clicked
@@ -46,6 +47,7 @@ const SearchForm: React.FC = () => {
   //Submit search form
   const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(6);
     //Perform search action
     if(validateForm()){
       dispatch(getSearch(searchParams.searchQuery,1000,false));   
@@ -63,7 +65,10 @@ const SearchForm: React.FC = () => {
       <form onSubmit={handleSubmit}>
             <FormGroup controlId="searchQuery">
                   {/* Search bar */}
-                  <SearchBar inputValue={searchParams.searchQuery} searchPreview={searchState.SearchPreview} handleSearchPreview={handleSearchPreview} handlePreviewItemEvent={previewItemEvent} handleChange={handleChange} name='searchQuery' autoFocus={false} ></SearchBar>
+                  <SearchBar inputValue={searchParams.searchQuery} searchPreview={searchState.SearchPreview} handleSearchPreview={handleSearchPreview} handlePreviewItemEvent={previewItemEvent} handleChange={handleChange} name='searchQuery' autoFocus={true}></SearchBar>
+
+                  {/* Divider */}
+                  <div className='divider'></div>
 
                   {/* Search Results */}
                   <div className= 'searchItems' ref={searchListRef} tabIndex={-1}>

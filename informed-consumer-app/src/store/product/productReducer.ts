@@ -1,6 +1,7 @@
 
 import { GET_PRODUCT,
     SET_PRODUCT,
+    ERR_PRODUCT,
     ProductDispatchTypes,
     ProductData
     } from '../types';
@@ -21,6 +22,12 @@ export const productReducer = (state:ProductState = initialState, action: Produc
             return{
                 ...state,
                 isLoading: true
+            }
+        //Start loading
+        case ERR_PRODUCT:
+            return{
+                ...state,
+                isLoading: false
             }
         //End loading, Store Product
         case SET_PRODUCT:

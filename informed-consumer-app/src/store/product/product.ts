@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { History } from 'history';
 
-import { GET_PRODUCT, SET_PRODUCT, ProductDispatchTypes, ProductData } from '../types';
+import { GET_PRODUCT, SET_PRODUCT, ERR_PRODUCT, ProductDispatchTypes, ProductData } from '../types';
 import { Dispatch } from "redux";
-import store from '../store';
 
 
 
@@ -22,17 +21,18 @@ export const getProductData = (history:History, appid: number) => async(dispatch
         }
         else
         {
+
             const storeData = resp.data[appid].data;
             
             const product:ProductData ={
                 name: storeData.name,
-                productKey: storeData.steam_appid,
+                productKey: storeData.steam_appid.toString(),
                 price: storeData.price_overview? storeData.price_overview.final_formatted : "Free",
                 currency: storeData.price_overview? storeData.price_overview.currency : "",
                 store: "Steam",
                 picture: storeData.header_image
             }
-
+            
             history.push('/game');
             
             //push product data to store and end loading flag
@@ -43,7 +43,10 @@ export const getProductData = (history:History, appid: number) => async(dispatch
         }
     }
     catch(err) {
-        console.log(err);
+        //End product loading flag
+        dispatch({type: ERR_PRODUCT});
+        
+        throw new Error(err);
     }
 }
 

@@ -49,6 +49,7 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
         {
           setCurrent(current+1);
         }
+        console.log(5.1);
         break;
       //Move up preview list
       case "ArrowUp":
@@ -60,8 +61,10 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
         break;
       //Run preview item event passed through prop
       case "Enter": 
+      console.log(5.3);
         if (current !== 0)
         {
+          console.log(5.31);
           e.preventDefault();
           handlePreviewItemEvent(searchPreview[current-1].appid);
         }
@@ -88,11 +91,12 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
         <input
         type='text'
         tabIndex={0}
-        autoFocus={autoFocus }
+        autoFocus={autoFocus}
         name={name}
         placeholder="..."
         value={inputValue}
-        onChange={(e)=>{handleChange(e.target.name, e.target.value);handleSearchPreview(e);}} 
+        data-testid="searchInput"
+        onChange={(e)=>{console.log(1);handleChange(e.target.name, e.target.value);handleSearchPreview(e);}} 
         className="searchInput"
         autoComplete="off"
         onFocus={() => setPreview(true)}
@@ -110,6 +114,7 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
                   onClick={() => dispatch(getProductData(history, item.appid)) } 
                   key={item.appid} 
                   id={(index+1).toString()}
+                  data-testid={'preview'+item.appid}
                 >
                     {item.name}
                 </button>

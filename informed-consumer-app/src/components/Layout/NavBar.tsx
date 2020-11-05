@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="navColor">
-      <nav className="navBar container">
+      <nav className="navBar">
         <div className="navStart">
           <div className="navItems">
             {/* App logo and home button */}
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
         </div>
         {/*Auth*/}
         <div className="navEnd navSpace">
-          <div>Login</div>
+          <NavItem>Login</NavItem>
         </div>
       </nav>
     </div>

@@ -1,15 +1,16 @@
 :root {
-  --main-color: #8ECBD2;
-  --main-color-opaque:rgb(142, 203, 210,0.8);
+  --main-color: #68b7c0;
+  --main-color-opaque:rgb(104, 183, 192,0.8);
 }
 
 body {
-    background-color: #F2F2F2;
-    min-height: 100vh;
-    margin: 0px;;
-  }
+  background-color: #F2F2F2;
+  min-height: 100vh;
+  margin: 0px;;
+}
   
 .centerBlock {
-    display: flex;
-    justify-content: center;
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
 }

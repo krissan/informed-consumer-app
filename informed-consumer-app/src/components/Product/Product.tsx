@@ -14,8 +14,10 @@ const Product: React.FC = () => {
           <img src={productState.picture} alt="Italian Trulli"></img>
           <div>
             <div className="productTitle">{productState.name}</div>
-            <div>{productState.price}</div>
-            <div>Available on {productState.store}</div>
+            <div className="productContent">
+              <div>{productState.price}</div>
+              <div>Available on {productState.store}</div>
+            </div>
           </div>
         </div>
       :
