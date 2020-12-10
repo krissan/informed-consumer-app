@@ -1,7 +1,7 @@
 
 .searchItems {
-    margin-top: 20px;
-    width: 450px;
+    margin-top: 20px; 
+    min-width: 480px;
 }
 
 .searchItems:focus {
@@ -9,19 +9,30 @@
 }
 
 
-.searchItems>button {
-    width: 100%;
+.searchItem>button {
     padding: 10px 10px;
-    margin-left: 10px;
-    border-style: solid;
-    border-color:  var(--main-color);
-    border-width: 0px 0px 1px 0px;
     cursor: pointer;
     background-color: transparent;
     text-align: left;
+    border:none;
 }
 
-.searchItems>button:hover, .searchItems>button:focus
+.searchItem {
+    display: flex;
+    justify-content: space-between;
+    border-style: solid;
+    border-color:  var(--main-color);
+    border-width: 0px 0px 1px 0px;
+}
+
+.searchItem>button {
+    padding-left: 20px;
+    font: monsterrat;
+    font-size: 16px;
+    width: 400px;
+}
+
+.searchItem>button:hover, .searchItems>button:focus
 {
     background-color:  var(--main-color);
     color: white;
@@ -31,4 +42,5 @@
 .divider {
     height: 1px;
     background-color: var(--main-color);
+    min-width: 480px;
 }

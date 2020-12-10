@@ -4,11 +4,12 @@ import { GET_SEARCH,
     SET_SEARCH_PREVIEW,
     SearchDispatchTypes,
     SearchPreviewItem,
+    SearchItem
     } from '../types';
 
 export interface SearchState {
     isLoading: boolean,
-    SearchItems: Array<SearchPreviewItem>
+    SearchItems: Array<SearchItem>
     SearchPreview: Array<SearchPreviewItem>
     SearchTerm: string
 }
@@ -17,7 +18,7 @@ const initialState: SearchState = {
     isLoading: false,
     SearchPreview: [],
     SearchItems: [],
-    SearchTerm: ''
+    SearchTerm: '',
 }
 
 export const searchReducer = (state:SearchState = initialState, action: SearchDispatchTypes) : SearchState => {
@@ -30,7 +31,6 @@ export const searchReducer = (state:SearchState = initialState, action: SearchDi
             }
         //End loading, Store Search Preview
         case SET_SEARCH_PREVIEW:
-            console.log(4);
             return{
                 ...state,
                 isLoading: false,

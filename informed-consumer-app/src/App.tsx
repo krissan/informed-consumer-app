@@ -3,6 +3,8 @@ import Navbar from "./components/Layout/NavBar";
 import Layout from "./components/Layout/Layout";
 import Product from "./components/Product/Product";
 import ProductDNE from "./components/Product/ProductDoesNotExist";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
 
 import {
   BrowserRouter,
@@ -22,13 +24,18 @@ function App() {
               <Route exact path="/game">
                 <Product />
               </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
               <Route exact path="/gameNotFound">
                 <ProductDNE />
               </Route>
               <Route exact path="/">
                 <Layout />
               </Route>
-              <Layout></Layout>
             </Switch>
           </div>
       </BrowserRouter>

@@ -10,10 +10,6 @@
     font-size: 19px;
 }
 
-.nav-item:hover {
-    text-shadow: 1px 0 0 currentColor;
-}
-
 .navStart {
     display: flex;
     align-items: center;
@@ -22,13 +18,22 @@
 
 .navEnd {
     display: flex;
-    justify-content: flex-start;
+    justify-items: flex-start;
     font-size: 18px;
 }
 
 .navSpace {
     margin-left: 20px;
     cursor: pointer;
+}
+
+.navSpace:hover {
+    text-shadow: 1px 0 0 currentColor;
+}
+
+.navDivider
+{
+    margin-left:20px
 }
 
 .navBar {

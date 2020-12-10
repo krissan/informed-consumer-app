@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect, useRef } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import {useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -29,14 +29,14 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
     if(current !== 0) {
       handleChange(name, searchPreview[current-1].name);
     }
-  }, [current])
+  }, [current,handleChange,searchPreview,name])
 
   //If search preview changes return to input
   useEffect(() => {
     if(current !== 0) {
       setCurrent(0);
     }
-  }, [searchPreview])
+  }, [searchPreview,current])
 
   //Handle keyboard actions on search bar
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -49,7 +49,6 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
         {
           setCurrent(current+1);
         }
-        console.log(5.1);
         break;
       //Move up preview list
       case "ArrowUp":
@@ -61,10 +60,8 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
         break;
       //Run preview item event passed through prop
       case "Enter": 
-      console.log(5.3);
         if (current !== 0)
         {
-          console.log(5.31);
           e.preventDefault();
           handlePreviewItemEvent(searchPreview[current-1].appid);
         }
@@ -81,8 +78,6 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
     }
   }
 
-
-
   return (
     <div className="searchBar" onBlur={() => setPreview(false)}>
       <div className="searchLabel">Search</div>
@@ -96,7 +91,7 @@ const SearchBar: React.FC<SearchBar>= ({inputValue, name, autoFocus, searchPrevi
         placeholder="..."
         value={inputValue}
         data-testid="searchInput"
-        onChange={(e)=>{console.log(1);handleChange(e.target.name, e.target.value);handleSearchPreview(e);}} 
+        onChange={(e)=>{handleChange(e.target.name, e.target.value);handleSearchPreview(e);}} 
         className="searchInput"
         autoComplete="off"
         onFocus={() => setPreview(true)}

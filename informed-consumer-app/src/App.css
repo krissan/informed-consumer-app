@@ -1,6 +1,8 @@
 :root {
   --main-color: #68b7c0;
   --main-color-opaque:rgb(104, 183, 192,0.8);
+  --positive:  #27896d;
+  --negative: #e25364;
 }
 
 body {
@@ -13,4 +15,19 @@ body {
     margin-top: 50px;
     margin-left: 100px;
     margin-right: 100px;
+}
+
+.StandardButton {
+  width: 100px;
+  height: 40px;
+  border-radius: 0px;
+  background-color: var(--main-color);
+  opacity: 1;
+  border: none;
+  color: #F2F2F2;
+  margin-bottom: 5px;
+}
+
+.StandardButton:hover{
+  opacity: 0.75;
 }

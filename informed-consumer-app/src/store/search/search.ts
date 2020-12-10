@@ -4,6 +4,11 @@ import { SearchDispatchTypes, GET_SEARCH, CLEAR_SEARCH, SET_SEARCH, SET_SEARCH_P
 import { Dispatch } from "redux";
 
 
+type votingOn = {
+    category: string
+    entity: string
+}
+
 //grab product data based on search query
 export const getSearch = (query: string, limit: number, preview: boolean) => async(dispatch: Dispatch<SearchDispatchTypes>) => {
     //Start search loading flag
@@ -24,15 +29,31 @@ export const getSearch = (query: string, limit: number, preview: boolean) => asy
         } 
         //if query exists perform search
         else {
-            console.log(3.2);
             //grab amount of previews corresponding with limit and based on query
             const resp = await axios.get('http://localhost:5000/api/game/search?name='+query+'&limit='+limit);            
+            
+            let searchItems = []
             //sift out necessary data
-            const searchItems = resp.data.map((x: { appid: number; name: string; }) => {return {appid: x.appid, name: x.name}});
+            if(preview === true)
+            {
+                searchItems = resp.data.map((x: { appid: number; name: string; }) => {return {appid: x.appid, name: x.name}});
+            }
+            else
+            {
+                searchItems = resp.data.map((x: { appid: number; name: string; }) => {return {appid: x.appid, name: x.name, category: "game store", entity:"steam"}});
+            }
+            /******************
+            
+            grab distinct entities
+            grab their vote data
+            grab users vote
+            put them through new vote reducer into a dictionary (category, enity = {vote, votes})
+            use dictionary to populate tags
+            */
 
+            //set preview of search  results
             if (preview === true)
             {
-                console.log(3.3);
                 dispatch({
                     type: SET_SEARCH_PREVIEW,
                     payload: {
@@ -42,8 +63,8 @@ export const getSearch = (query: string, limit: number, preview: boolean) => asy
                 });
             }
             else
+            //set search results
             {
-                console.log(3.4);
                 dispatch({
                     type: SET_SEARCH,
                     payload: {

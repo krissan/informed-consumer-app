@@ -1,0 +1,22 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-informedconsumerapp-dev-140103-authRole",
+            "UnauthRoleArn": "arn:aws:iam::673127097809:role/amplify-informedconsumerapp-dev-140103-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::673127097809:role/amplify-informedconsumerapp-dev-140103-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-informedconsumerapp-dev-140103-deployment",
+            "UnauthRoleName": "amplify-informedconsumerapp-dev-140103-unauthRole",
+            "StackName": "amplify-informedconsumerapp-dev-140103",
+            "StackId": "arn:aws:cloudformation:us-east-1:673127097809:stack/amplify-informedconsumerapp-dev-140103/8cb47880-212b-11eb-af42-12dace8e8b83",
+            "AmplifyAppId": "dlhc4ydeh488p"
+        },
+        "categories": {
+            "auth": {
+                "InformedConsumerAppUserData": {
+                    "googleClientId": "998097046518-hge3unaomgsefn1dc784c5k7hihv9lq5.apps.googleusercontent.com"
+                }
+            }
+        }
+    }
+}

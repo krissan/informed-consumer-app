@@ -9,20 +9,23 @@ const Product: React.FC = () => {
 
   return (
     <div className="product">
-      {productState ?
         <div className="productCard">
-          <img src={productState.picture} alt="Italian Trulli"></img>
-          <div>
-            <div className="productTitle">{productState.name}</div>
-            <div className="productContent">
-              <div>{productState.price}</div>
-              <div>Available on {productState.store}</div>
+          {/* Check if product exists */}
+          {productState ?
+            <div>
+              {/* Product image */}
+              <img src={productState.picture} alt={productState.name+" image"}></img>
+              {/* Product Info */}
+              <div>
+                <div className="productTitle">{productState.name}</div>
+                <div>{productState.price}</div>
+                <div>Available on {productState.store}</div>
+              </div>
             </div>
-          </div>
+            :
+            <div className="productTitle">Product Not Selected</div>
+          }
         </div>
-      :
-        <div></div>
-      }
     </div>
   );
 }
